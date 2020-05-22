@@ -1,24 +1,38 @@
 <script context="module">
-	export async function preload({ params, query }) {
-		// the `slug` parameter is available because
-		// this file is called [slug].svelte
-		const res = await this.fetch(`blog/${params.slug}.json`);
-		const data = await res.json();
+  export async function preload({ params, query }) {
+    // the `slug` parameter is available because
+    // this file is called [slug].svelte
+    const res = await this.fetch(`blog/${params.slug}.json`);
+    const data = await res.json();
 
-		if (res.status === 200) {
-			return { post: data };
-		} else {
-			this.error(res.status, data.message);
-		}
-	}
+    if (res.status === 200) {
+      return { post: data };
+    } else {
+      this.error(res.status, data.message);
+    }
+  }
 </script>
 
 <script>
-	export let post;
+  export let post;
 </script>
 
 <style>
-	/*
+  .content {
+    margin-top: 3rem;
+  }
+
+  h1 + p {
+    font-style: italic;
+  }
+
+  .back {
+    display: block;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  /*
 		By default, CSS is locally scoped to the component,
 		and any unused styles are dead-code-eliminated.
 		In this page, Svelte can't know which elements are
@@ -26,39 +40,46 @@
 		so we have to use the :global(...) modifier to target
 		all elements inside .content
 	*/
-	.content :global(h2) {
-		font-size: 1.4em;
-		font-weight: 500;
-	}
+  .content :global(h2) {
+    font-size: 1.4em;
+    font-weight: 500;
+  }
 
-	.content :global(pre) {
-		background-color: #f9f9f9;
-		box-shadow: inset 1px 1px 5px rgba(0,0,0,0.05);
-		padding: 0.5em;
-		border-radius: 2px;
-		overflow-x: auto;
-	}
+  .content :global(pre) {
+    background-color: #f9f9f9;
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
+    padding: 0.5em;
+    border-radius: 2px;
+    overflow-x: auto;
+  }
 
-	.content :global(pre) :global(code) {
-		background-color: transparent;
-		padding: 0;
-	}
+  .content :global(pre) :global(code) {
+    background-color: transparent;
+    padding: 0;
+  }
 
-	.content :global(ul) {
-		line-height: 1.5;
-	}
+  .content :global(ul) {
+    line-height: 1.5;
+  }
 
-	.content :global(li) {
-		margin: 0 0 0.5em 0;
-	}
+  .content :global(li) {
+    margin: 0 0 0.5em 0;
+  }
+
+  .content :global(p) {
+    margin: 2rem 0;
+  }
 </style>
 
 <svelte:head>
-	<title>{post.title}</title>
+  <title>{post.title}</title>
 </svelte:head>
 
-<h1>{post.title}</h1>
+<a href="/blog" class="back">See all posts</a>
 
-<div class='content'>
-	{@html post.html}
+<h1>{post.title}</h1>
+<p>Published on {post.date}</p>
+
+<div class="content">
+  {@html post.html}
 </div>

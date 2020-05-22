@@ -5,8 +5,10 @@ const contents = JSON.stringify(
     return {
       title: post.title,
       slug: post.slug,
+      date: post.date,
+      excerpt: post.excerpt,
     };
-  })
+  }),
 );
 
 export function get(req, res) {
