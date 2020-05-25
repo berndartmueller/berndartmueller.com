@@ -10,6 +10,10 @@ const alias = { svelte: path.resolve('node_modules', 'svelte') };
 const extensions = ['.mjs', '.js', '.json', '.svelte', '.html'];
 const mainFields = ['svelte', 'module', 'browser', 'main'];
 
+const svelteImageOptions = {
+  placeholder: 'blur',
+};
+
 module.exports = {
   client: {
     entry: config.client.entry(),
@@ -18,13 +22,19 @@ module.exports = {
     module: {
       rules: [
         {
+          test: /\.js$/,
+          exclude: /node_modules/,
+        },
+        {
           test: /\.(svelte|html)$/,
           use: {
             loader: 'svelte-loader',
             options: {
               dev,
               hydratable: true,
+              emitCss: false,
               hotReload: false, // pending https://github.com/sveltejs/svelte/issues/2377
+              preprocess: [require('svelte-image')(svelteImageOptions)],
             },
           },
         },
@@ -58,6 +68,12 @@ module.exports = {
               css: false,
               generate: 'ssr',
               dev,
+              preprocess: [
+                require('svelte-image')({
+                  ...svelteImageOptions,
+                  lazy: true,
+                }),
+              ],
             },
           },
         },

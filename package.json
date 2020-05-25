@@ -5,20 +5,41 @@
   "scripts": {
     "start": "sapper dev",
     "dev": "sapper dev --port 3000",
-    "build": "sapper export",
+    "build": "sapper export && npm run og-images",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
-    "test": "run-p --race dev cy:run"
+    "test": "run-p --race dev cy:run",
+    "og-images": "ts-node scripts/og-images/index.ts"
   },
   "dependencies": {
+    "@polka/send": "^0.4.0",
+    "common-tags": "^1.8.0",
     "compression": "^1.7.1",
-    "polka": "next",
-    "sirv": "^0.4.0"
+    "connect-slashes": "^1.4.0",
+    "he": "^1.2.0",
+    "marked": "^1.1.0",
+    "nprogress": "^0.2.0",
+    "polka": "^1.0.0-next.11",
+    "prismjs": "^1.20.0",
+    "puppeteer": "^3.3.0",
+    "puppeteer-core": "^3.3.0",
+    "rss": "^1.2.2",
+    "shiki": "^0.1.7",
+    "sirv": "^0.4.0",
+    "storyblok-js-client": "^2.5.0",
+    "striptags": "^3.1.1",
+    "ts-node": "^8.10.2",
+    "twemoji": "^13.0.0",
+    "typescript": "^3.9.5",
+    "url-join": "^4.0.1"
   },
   "devDependencies": {
+    "@types/he": "^1.1.1",
+    "@types/node": "^14.0.13",
     "npm-run-all": "^4.1.5",
     "sapper": "^0.27.0",
     "svelte": "^3.0.0",
+    "svelte-image": "^0.2.3",
     "svelte-loader": "^2.9.0",
     "webpack": "^4.7.0"
   }

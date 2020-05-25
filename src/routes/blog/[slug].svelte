@@ -1,85 +1,44 @@
 <script context="module">
   export async function preload({ params, query }) {
-    // the `slug` parameter is available because
-    // this file is called [slug].svelte
-    const res = await this.fetch(`blog/${params.slug}.json`);
+    const { slug } = params;
+
+    const res = await this.fetch(`blog/${slug}.json`);
     const data = await res.json();
 
-    if (res.status === 200) {
-      return { post: data };
-    } else {
-      this.error(res.status, data.message);
-    }
+    return { post: data.post, otherPosts: data.otherPosts };
   }
 </script>
 
 <script>
-  export let post;
+  import { stores } from '@sapper/app';
+  import getComponent from './../../components';
+
+  const { page } = stores();
+
+  export let slug = $page.params.slug;
+  export let post = {};
+  export let otherPosts = [];
 </script>
 
-<style>
-  .content {
-    margin-top: 3rem;
-  }
-
-  h1 + p {
-    font-style: italic;
-  }
-
-  .back {
-    display: block;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  /*
-		By default, CSS is locally scoped to the component,
-		and any unused styles are dead-code-eliminated.
-		In this page, Svelte can't know which elements are
-		going to appear inside the {{{post.html}}} block,
-		so we have to use the :global(...) modifier to target
-		all elements inside .content
-	*/
-  .content :global(h2) {
-    font-size: 1.4em;
-    font-weight: 500;
-  }
-
-  .content :global(pre) {
-    background-color: #f9f9f9;
-    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
-    padding: 0.5em;
-    border-radius: 2px;
-    overflow-x: auto;
-  }
-
-  .content :global(pre) :global(code) {
-    background-color: transparent;
-    padding: 0;
-  }
-
-  .content :global(ul) {
-    line-height: 1.5;
-  }
-
-  .content :global(li) {
-    margin: 0 0 0.5em 0;
-  }
-
-  .content :global(p) {
-    margin: 2rem 0;
-  }
-</style>
-
 <svelte:head>
-  <title>{post.title}</title>
+  <link rel="preconnect" href="https://avatars2.githubusercontent.com" />
+
+  <title>{post.content.title} - Bernd Artmüller</title>
+
+  <meta name="description" content={post.content.SEO.description} />
+  <link rel="canonical" href={`https://staging.berndartmueller.com/blog/${slug}`} />
+  <meta property="og:url" content={`https://staging.berndartmueller.com/blog/${slug}`} />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={post.content.title} />
+  <meta property="og:description" content={post.content.SEO.description} />
+  <meta property="og:image" content="https://staging.berndartmueller.com/og_image/blog/{slug}.png" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={`https://staging.berndartmueller.com/blog/${slug}`} />
+  <meta property="twitter:title" content={post.content.title} />
+  <meta property="twitter:description" content={post.content.SEO.description} />
+  <meta property="twitter:image" content="https://staging.berndartmueller.com/og_image/blog/{slug}.png" />
 </svelte:head>
 
-<a href="/blog" class="back">See all posts</a>
-
-<h1>{post.title}</h1>
-<p>Published on {post.date}</p>
-
-<div class="content">
-  {@html post.html}
-</div>
+{#if post.content.component}
+  <svelte:component this={getComponent(post.content.component)} {post} {otherPosts} />
+{/if}

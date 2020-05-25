@@ -1,28 +1,25 @@
-import posts from './_posts.js';
+import client, { defaultRequestConfig as reqConfig } from './../../storyBlock';
+import { processPost } from './../../utils';
 
-const lookup = new Map();
-posts.forEach(post => {
-	lookup.set(post.slug, JSON.stringify(post));
-});
+export async function get(req, res) {
+  const { slug } = req.params;
+  let { version } = req.query;
 
-export function get(req, res, next) {
-	// the `slug` parameter is available because
-	// this file is called [slug].json.js
-	const { slug } = req.params;
+  version = version || reqConfig.version;
 
-	if (lookup.has(slug)) {
-		res.writeHead(200, {
-			'Content-Type': 'application/json'
-		});
+  const response = await client.get(`cdn/stories/blog/${slug}`, { ...reqConfig, version });
+  const otherStories = await client.getAll('cdn/stories', {
+    version: 'published',
+    excluding_slugs: `blog/${slug}`,
+    per_page: 5,
+  });
 
-		res.end(lookup.get(slug));
-	} else {
-		res.writeHead(404, {
-			'Content-Type': 'application/json'
-		});
+  const post = await processPost(response.data.story, { slug });
 
-		res.end(JSON.stringify({
-			message: `Not found`
-		}));
-	}
+  const result = { post, otherPosts: otherStories || [] };
+
+  res.writeHead(200, {
+    'Content-Type': 'application/json',
+  });
+  res.end(JSON.stringify(result));
 }

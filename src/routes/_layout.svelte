@@ -1,5 +1,26 @@
 <script>
+  import NProgress from 'nprogress';
+  import { stores } from '@sapper/app';
+  import GlobalStyle from '../components/GlobalStyle.svelte';
   import Nav from '../components/Nav.svelte';
+  import Footer from '../components/Footer.svelte';
+
+  NProgress.configure({
+    minimum: 0.16,
+    showSpinner: false,
+  });
+
+  const { preloading } = stores();
+
+  $: {
+    if ($preloading) {
+      NProgress.start();
+    }
+
+    if (!$preloading) {
+      NProgress.done();
+    }
+  }
 
   export let segment;
 </script>
@@ -7,15 +28,26 @@
 <style>
   main {
     position: relative;
-    max-width: 42em;
-    padding: 2em;
-    margin: 1.5rem auto 0;
+    max-width: 40em;
+    padding: 1.2rem;
+    margin: 0.5rem auto 0;
     box-sizing: border-box;
   }
+
+  @media (min-width: 1024px) {
+    main {
+      padding: 2em;
+      margin: 1.5rem auto 0;
+    }
+  }
 </style>
+
+<GlobalStyle />
 
 <Nav {segment} />
 
 <main>
   <slot />
 </main>
+
+<Footer />

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "declaration": false,
     "outDir": "dist",
     "module": "commonjs",
@@ -9,27 +10,25 @@
     "esModuleInterop": true,
     "sourceMap": true,
     "inlineSources": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": true,
     "sourceRoot": "/",
     "rootDirs": ["."],
-    "types": ["node", "mocha", "chai"],
+    "types": ["node"],
     "target": "es6",
     "lib": ["es6", "dom"],
     "moduleResolution": "node",
     "baseUrl": ".",
     "typeRoots": [
       // add path to @types
-      "./src/typings",
       "node_modules/@types"
     ],
     "paths": {
       "@root/*": ["./*"]
     }
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "./scripts/**/*"],
   "exclude": ["node_modules"],
-  "files": ["src/index.ts"],
   "compileOnSave": true,
   "buildOnSave": false,
   "atom": { "rewriteTsconfig": false }

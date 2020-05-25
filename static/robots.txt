@@ -1,0 +1,12 @@
+User-agent: *
+Disallow:
+User-agent: bingbot
+Crawl-delay: 3
+User-agent: msnbot
+Crawl-delay: 3
+User-agent: Applebot
+Crawl-delay: 3
+User-agent: Yandex
+Crawl-delay: 3
+Sitemap: https://www.berndartmueller.com/sitemap.xml
+Sitemap: https://www.berndartmueller.com/blog/sitemap.xml

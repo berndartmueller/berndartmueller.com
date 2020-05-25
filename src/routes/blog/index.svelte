@@ -1,14 +1,17 @@
 <script context="module">
-  export function preload({ params, query }) {
-    return this.fetch(`blog.json`)
-      .then(r => r.json())
-      .then(posts => {
-        return { posts };
-      });
+  export async function preload({ params, query }) {
+    const res = await this.fetch(`blog/posts.json`);
+    const data = await res.json();
+
+    return { posts: data.posts || [] };
   }
 </script>
 
 <script>
+  import PageTransition from './../../components/PageTransition.svelte';
+  import { formatDate, formatDateNth } from './../../utils/formatDate';
+  import { stores } from '@sapper/app';
+
   export let posts;
 </script>
 
@@ -22,13 +25,19 @@
 
   article {
     padding: 4rem 0;
-    border-bottom: 1px solid #e1e3e6;
+    border-top: 1px solid var(--color-grey-light);
+  }
+
+  ul li:first-child article {
+    border-top: none;
   }
 
   h2 {
     font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 0.7rem;
+    margin-bottom: 0;
+    font-family: 'Playfair Display', Georgia, Times, serif;
+    text-rendering: optimizeLegibility;
   }
 
   h2 a {
@@ -38,51 +47,48 @@
   .meta {
     font-weight: 400;
     font-size: 1rem;
-    line-height: 2rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .meta {
-      color: #909499;
-    }
-
-    article {
-      border-color: #3b3d40;
-    }
+    font-style: italic;
+    color: var(--color-text-light);
   }
 </style>
 
 <svelte:head>
-  <title>Blog - berndartmueller.com</title>
+  <title>Articles - Bernd Artmüller</title>
+  <meta name="description" value="I'm Bernd Artmüller and I'm a passionate Web Developer. Typescript, ..." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.berndartmueller.com/blog" />
+  <meta name="twitter:url" content="https://www.berndartmueller.com/blog" />
+  <link rel="canonical" href="https://www.berndartmueller.com/blog" />
 </svelte:head>
 
-<h1>Blog</h1>
+<PageTransition>
+  <h1>Articles</h1>
 
-<p>
-  Candid thoughts about React.js, Node.js, startups and other interesting things. Subscribe to the newsletter to be notified when I publish
-  something new.
-</p>
+  <ul>
+    {#each posts as post}
+      <li>
+        <article>
+          <h2>
+            <a rel="prefetch" href="blog/{post.slug}">{post.content.title}</a>
+          </h2>
 
-<ul>
-  {#each posts as post}
-    <!-- we're using the non-standard `rel=prefetch` attribute to
-				tell Sapper to load the data for the page as soon as
-				the user hovers over the link or taps it, instead of
-				waiting for the 'click' event -->
-    <li>
-      <article>
-        <h2>
-          <a rel="prefetch" href="blog/{post.slug}">{post.title}</a>
-        </h2>
+          <div class="meta">
+            <time
+              title="Originally published {formatDate('YYYY-MM-DD', new Date(post.first_published_at))}"
+              datetime={formatDate('YYYY-MM-DD', new Date(post.first_published_at))}>
+              {@html formatDateNth(new Date(post.first_published_at))}
+            </time>
 
-        <div class="meta">
-          <time datetime="10-07-2019">10 Jul 2019</time>
-        </div>
+          </div>
 
-        <p class="excerpt">{post.excerpt}…</p>
+          <p class="excerpt">
+            {@html post.content.excerpt}
+          </p>
 
-        <a href="blog/{post.slug}">Read</a>
-      </article>
-    </li>
-  {/each}
-</ul>
+          <a href="blog/{post.slug}" class="more-link">Read article →</a>
+        </article>
+      </li>
+    {/each}
+  </ul>
+</PageTransition>
