@@ -10,7 +10,7 @@ const render = stories => html2`<?xml version="1.0" encoding="UTF-8"?>
 function renderEntry(story) {
   return html2`
     <url>
-      <loc>https://www.berndartmueller.at/blog/${story.slug}</loc>
+      <loc>https://www.berndartmueller.com/blog/${story.slug}</loc>
     </url>
   `;
 }

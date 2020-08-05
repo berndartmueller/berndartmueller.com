@@ -10,7 +10,7 @@ const render = urls => html2`<?xml version="1.0" encoding="UTF-8"?>
 function renderEntry(url) {
   return html2`
     <url>
-      <loc>https://www.berndartmueller.at/${url}</loc>
+      <loc>https://www.berndartmueller.com/${url}</loc>
     </url>
   `;
 }
