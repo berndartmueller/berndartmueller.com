@@ -58,4 +58,10 @@
     <br />
     E-Mail: hello /at/ berndartmueller dot com
   </p>
+
+  <p>
+    <a href="/sitemap.xml">Sitemap</a>
+    <br />
+    <a href="/blog/sitemap.xml">Article Sitemap</a>
+  </p>
 </PageTransition>
