@@ -66,8 +66,7 @@
 
   :global(body) {
     margin: 0;
-    font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-      sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-size: 16px;
     line-height: 1.5;
     color: var(--color-text);
