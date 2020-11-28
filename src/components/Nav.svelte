@@ -93,16 +93,6 @@
     color: var(--color-primary);
   }
 
-  .selected::after {
-    position: absolute;
-    content: '';
-    width: calc(100% - 2rem);
-    height: 2px;
-    background-color: var(--color-primary);
-    display: block;
-    bottom: 5px;
-  }
-
   .logo,
   nav,
   .social {

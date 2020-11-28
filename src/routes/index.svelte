@@ -19,6 +19,11 @@
     margin: 3rem 0;
   }
 
+  h2 {
+    margin-bottom: 0.5em;
+    margin-top: 0;
+  }
+
   h1 + p {
     font-size: 1.3rem;
   }
@@ -98,13 +103,13 @@
       a Vienna based real-estate matching platform. 10+ years of experience and many founded startups, allowed me to work on innovative
       ideas. Beside, I'm passionate about fast-loading, easy to use websites/apps.
     </p>
-    <a href="/about" class="more-link">Read more about me →</a>
+    <a href="/about" class="more-link">More about me</a>
   </div>
 
   <section class="articles">
     <h2>
       Latest Articles
-      <a href="/blog" class="more-link">See all →</a>
+      <a href="/blog" class="more-link">See all</a>
     </h2>
 
     <ul>

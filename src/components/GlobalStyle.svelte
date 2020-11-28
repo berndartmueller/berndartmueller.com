@@ -19,22 +19,13 @@
       --color-grey-light: #2e2f38;
       --color-bg: #0f0e17;
       --color-bg-shade: #f0f0f1;
-      --color-text: #bfc0cc;
+      --color-text: #e1e1ea;
       --color-text-shade: #2b2c2d;
       --color-text-light: #909499;
       --color-text-headline: #fffffe;
       --syntax-highlight-bg: transparent;
       --syntax-highlight-padding: 0rem;
     }
-  }
-
-  @font-face {
-    font-family: 'Playfair Display';
-    font-style: normal;
-    font-display: swap;
-    font-weight: 500;
-    src: local('PLayfair Display'), url(/fonts/playfair_display/PlayfairDisplay-Bold.woff2) format('woff2'),
-      url(/fonts/playfair_display/PlayfairDisplay-Bold.woff) format('woff');
   }
 
   :global(#nprogress) {
@@ -79,10 +70,10 @@
   :global(h4),
   :global(h5),
   :global(h6) {
-    margin: 0 0 0.5em 0;
-    font-weight: 400;
+    margin: 2em 0 1em 0;
+    font-weight: bold;
     line-height: 1.2;
-    font-family: 'Playfair Display', Georgia, Times, serif;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     text-rendering: optimizeLegibility;
     color: var(--color-text-headline);
   }
@@ -91,8 +82,9 @@
     text-align: center;
     font-size: 2.5rem;
     font-weight: bold;
-    line-height: 2.6rem;
+    line-height: 3rem;
     letter-spacing: -0.01em;
+    margin: 0 0 0.75em 0;
   }
 
   :global(h2) {
@@ -124,10 +116,9 @@
   :global(.more-link) {
     color: var(--color-accent);
     font-size: 1.2rem;
-    font-family: 'Playfair Display', Georgia, Times, serif;
     text-rendering: optimizeLegibility;
     text-decoration: none;
-    letter-spacing: 0.02em;
+    font-weight: 600;
   }
 
   @media (prefers-color-scheme: dark) {

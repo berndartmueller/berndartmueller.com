@@ -150,8 +150,9 @@
   }
 
   h1 {
-    font-size: 3.5rem;
-    line-height: 3.3rem;
+    font-size: 2.6;
+    line-height: 3rem;
+    margin-bottom: 0.25em;
   }
 
   h1 + time {
@@ -167,10 +168,9 @@
     margin-bottom: 1rem;
     color: var(--color-accent);
     font-size: 1.4rem;
-    font-family: 'Playfair Display', Georgia, Times, serif;
     text-rendering: optimizeLegibility;
     text-decoration: none;
-    letter-spacing: 0.02em;
+    font-weight: 600;
   }
 
   /*
@@ -191,18 +191,16 @@
   .content :global(.lead) {
     font-size: 1.6rem;
     font-weight: 400;
-    line-height: 1.4;
+    line-height: 1.5;
     margin-bottom: 2.5rem;
   }
 
   .content :global(h2) {
     font-size: 2.1em;
-    font-weight: 500;
   }
 
   .content :global(h3) {
     font-size: 1.6em;
-    font-weight: 500;
   }
 
   .content :global(p) :global(a) {
@@ -438,6 +436,11 @@
   }
 
   @media (min-width: 1024px) {
+    h1 {
+      font-size: 3.5rem;
+      line-height: 4rem;
+    }
+
     .content :global(.extend) {
       margin-left: -2.5rem;
       margin-right: -2.5rem;
@@ -554,28 +557,30 @@
         Assembly alum [SEI 08]!
       </p>
 
-      <a href="/about" class="more-link">Read more about me →</a>
+      <a href="/about" class="more-link">Read more about me</a>
 
     </div>
 
-    <div class="further-read">
-      <h3 class="secondary-headline">More to read</h3>
+    {#if otherPosts && otherPosts.length > 0}
+      <div class="further-read">
+        <h3 class="secondary-headline">More to read</h3>
 
-      <ul>
-        {#each otherPosts as otherPost}
-          <li>
-            <h4>
-              <a href="/blog/{otherPost.slug}">{otherPost.content.title}</a>
-            </h4>
-            <time
-              title="Originally published {formatDate('YYYY-MM-DD', new Date(otherPost.first_published_at))}"
-              datetime={formatDate('YYYY-MM-DD', new Date(otherPost.first_published_at))}>
-              {@html formatDateNth(new Date(otherPost.first_published_at))}
-            </time>
-          </li>
-        {/each}
-      </ul>
-    </div>
+        <ul>
+          {#each otherPosts as otherPost}
+            <li>
+              <h4>
+                <a href="/blog/{otherPost.slug}">{otherPost.content.title}</a>
+              </h4>
+              <time
+                title="Originally published {formatDate('YYYY-MM-DD', new Date(otherPost.first_published_at))}"
+                datetime={formatDate('YYYY-MM-DD', new Date(otherPost.first_published_at))}>
+                {@html formatDateNth(new Date(otherPost.first_published_at))}
+              </time>
+            </li>
+          {/each}
+        </ul>
+      </div>
+    {/if}
 
     <div class="newsletter">
       <form
@@ -589,7 +594,7 @@
         </h3>
 
         <div class="subscribe-form">
-          <input id="newsletter-email" type="email" name="email" placeholder="Your e-mail address would love it here..." required />
+          <input id="newsletter-email" type="email" name="email" placeholder="Your e-mail address..." required />
           <input type="hidden" value="1" name="embed" />
           <input type="submit" value="Subscribe" />
         </div>

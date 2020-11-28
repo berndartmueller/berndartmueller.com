@@ -1,35 +1,21 @@
 # www.berndartmueller.com
 
-My personal (yet to be implemented) website https://www.berndartmueller.com
+My personal website https://www.berndartmueller.com.
 
 ## 🚀 Quick start
 
-# Sapper Example
+This website is based on [Sapper](https://sapper.svelte.dev/) app that can be deployed with Vercel and zero configuration.
 
-This directory is a brief example of a [Sapper](https://sapper.svelte.dev/) app that can be deployed with ZEIT Now and zero configuration.
+## CMS
 
-## Deploy Your Own
+[storyblok](https://www.storyblok.com/) is used to manage the content.
 
-Deploy your own Sapper project with ZEIT Now.
+## Development
 
-[![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/zeit/now/tree/master/examples/sapper)
-
-_Live Example: https://sapper.now-examples.now.sh_
-
-### How We Created This Example
-
-To get started with Sapper deployed with ZEIT Now, you can use [degit](https://github.com/Rich-Harris/degit) to initialize the project:
-
-```shell
-$ npx degit "sveltejs/sapper-template#webpack" my-sapper-app
+```
+$ npm run dev
 ```
 
-> The only change made is to change the build script in `package.json` to be `"sapper export"`.
+## Deploy
 
-### Deploying From Your Terminal
-
-You can deploy your new Sapper project with a single command from your terminal using [Now CLI](https://zeit.co/download):
-
-```shell
-$ now
-```
+This site is deployed to Vercel.

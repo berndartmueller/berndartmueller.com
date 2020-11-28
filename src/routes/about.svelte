@@ -32,8 +32,8 @@
     margin-top: 3rem;
     scroll-margin-top: 4rem;
     position: relative;
-    font-size: 1.8em;
-    font-weight: 500;
+    font-size: 1.6em;
+    font-weight: bold;
   }
 
   h1 + p {
@@ -93,7 +93,7 @@
 
   .timeline .press-coverage .center-wrapper {
     border: 1px solid var(--color-grey-light);
-    background-color: var(--color-bg);
+    background-color: #fff;
     border-radius: 100%;
     display: inline-block;
     height: 80px;
@@ -146,7 +146,6 @@
   .timeline .press-coverage .title {
     font-size: 0.9em;
     color: var(--color-text);
-    font-style: italic;
   }
 
   .timeline .press-coverage .title a {
@@ -162,7 +161,6 @@
 
   .speaking a {
     color: var(--color-primary);
-    font-family: 'Playfair Display', Georgia, Times, serif;
     text-rendering: optimizeLegibility;
     text-decoration: none;
     font-size: 1.3rem;
@@ -216,7 +214,7 @@
   <h1>About myself</h1>
 
   <p>
-    My name is Bernd Artmüller, 29 years young and live in Vienna, Austria.
+    My name is Bernd Artmüller, 29 years young and I live in Vienna, Austria.
     <br />
     I'm the Co-Founder and CTO of
     <a href="https://www.findheim.at">findheim.at,</a>

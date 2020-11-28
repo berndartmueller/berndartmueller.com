@@ -30,14 +30,13 @@
 
   ul li:first-child article {
     border-top: none;
+    padding-top: 0;
   }
 
   h2 {
     font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 0;
-    font-family: 'Playfair Display', Georgia, Times, serif;
-    text-rendering: optimizeLegibility;
+    margin: 0;
   }
 
   h2 a {
@@ -45,6 +44,7 @@
   }
 
   .meta {
+    margin-top: 0.75rem;
     font-weight: 400;
     font-size: 1rem;
     font-style: italic;
@@ -63,8 +63,6 @@
 </svelte:head>
 
 <PageTransition>
-  <h1>Articles</h1>
-
   <ul>
     {#each posts as post}
       <li>
@@ -86,7 +84,7 @@
             {@html post.content.excerpt}
           </p>
 
-          <a href="blog/{post.slug}" class="more-link">Read article →</a>
+          <a href="blog/{post.slug}" class="more-link">Read article</a>
         </article>
       </li>
     {/each}
