@@ -524,7 +524,6 @@
               1.88c7.693 0 11.9-6.373 11.9-11.9 0-.18-.005-.362-.013-.54a8.495 8.495 0 002.087-2.165l-.001-.001z"
               fill="currentColor" />
           </svg>
-          @berndartmueller
         </a>
         <a href="https://github.com/berndartmueller" class="author__social-link" title="GitHub" target="_blank" rel="noopener">
           <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img">
@@ -553,11 +552,11 @@
       </p>
 
       <p class="author__text">
-        Bernd Artmüller is a Full-Stack developer living in Vienna, Austria 🇦🇹. Learner Advocate @eggheadio! UX/UI Engineer! General
-        Assembly alum [SEI 08]!
+        Bernd Artmüller is a serial-founder and full-stack developer living in Vienna, Austria 🇦🇹 with 10+ years of experience building fast
+        and easy to use websites and web applications.
       </p>
 
-      <a href="/about" class="more-link">Read more about me</a>
+      <a href="/about" class="more-link">Full Bio</a>
 
     </div>
 

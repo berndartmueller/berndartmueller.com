@@ -28,6 +28,12 @@
     min-height: auto !important;
   }
 
+  :global(.myself-image) :global(img) {
+    border-radius: 100px;
+
+    overflow: hidden;
+  }
+
   h2 {
     margin-top: 3rem;
     scroll-margin-top: 4rem;
@@ -57,19 +63,6 @@
 
   .timeline .entry-wrapper {
     position: relative;
-    padding-bottom: 25px;
-  }
-
-  .timeline .entry-wrapper::before {
-    background-color: var(--color-grey-light);
-    content: '';
-    width: 1px;
-    height: 100%;
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 40px;
-    z-index: 1;
   }
 
   .timeline .entry-wrapper .y {
@@ -79,34 +72,28 @@
     font-size: 1.4rem;
     display: inline-block;
     position: relative;
-    margin-left: 13px;
   }
 
   .timeline-wrapper .m + .press-coverage {
     margin-top: 20px;
   }
 
-  .timeline .press-coverage {
-    margin: 25px 0 0;
-    position: relative;
-  }
-
   .timeline .press-coverage .center-wrapper {
-    border: 1px solid var(--color-grey-light);
-    background-color: #fff;
-    border-radius: 100%;
-    display: inline-block;
-    height: 80px;
-    width: 80px;
     position: relative;
-    z-index: 10;
+    display: inline-block;
   }
 
   .timeline .press-coverage .logo-wrapper {
+    border: 1px solid var(--color-grey-light);
+    background-color: #fff;
+    border-radius: 100%;
+    position: relative;
+    z-index: 10;
     display: block;
     padding: 20px;
-    height: calc(100% - 40px);
-    width: calc(100% - 40px);
+    margin-bottom: 1rem;
+    height: 40px;
+    width: 40px;
   }
 
   .timeline .press-coverage .logo-wrapper :global(.logo) {
@@ -117,24 +104,6 @@
 
   .timeline .press-coverage .info a {
     text-decoration: none;
-  }
-
-  .timeline .press-coverage.left .info {
-    left: 100%;
-    text-align: left;
-    padding-left: 30px;
-  }
-
-  .timeline .press-coverage.right .info {
-    left: 100%;
-    text-align: left;
-    padding-left: 30px;
-  }
-  .timeline .press-coverage .info {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 300px;
   }
 
   .timeline .press-coverage strong {
@@ -178,8 +147,30 @@
       text-align: center;
     }
 
+    .timeline .press-coverage .center-wrapper {
+      height: 80px;
+      width: 80px;
+    }
+
     .timeline .entry-wrapper::before {
+      background-color: var(--color-grey-light);
+      content: '';
+      width: 1px;
+      height: 100%;
+      position: absolute;
+      top: 0px;
+      bottom: 0px;
       left: 50%;
+      z-index: 1;
+    }
+
+    .timeline .press-coverage {
+      margin: 25px 0 0;
+      position: relative;
+    }
+
+    .timeline .press-coverage .logo-wrapper {
+      margin-bottom: 0;
     }
 
     .timeline .press-coverage.left .info {
@@ -188,6 +179,23 @@
       text-align: right;
       padding-right: 50px;
       padding-left: 0;
+    }
+
+    .timeline .press-coverage.right .info {
+      left: 100%;
+      text-align: left;
+      padding-left: 30px;
+    }
+
+    .timeline .press-coverage .info {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 300px;
+    }
+
+    .timeline .entry-wrapper {
+      padding-bottom: 25px;
     }
 
     .timeline .entry-wrapper .y {
