@@ -74,10 +74,6 @@
     position: relative;
   }
 
-  .timeline-wrapper .m + .press-coverage {
-    margin-top: 20px;
-  }
-
   .timeline .press-coverage .center-wrapper {
     position: relative;
     display: inline-block;
