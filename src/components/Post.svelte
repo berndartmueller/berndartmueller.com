@@ -155,7 +155,7 @@
     margin-bottom: 0.25em;
   }
 
-  h1 + time {
+  time.publish-time {
     font-style: italic;
     display: block;
     text-align: center;
@@ -435,6 +435,30 @@
     margin-right: 0.4rem;
   }
 
+  .tags {
+    list-style: none;
+    list-style-type: none;
+    margin: 1.5rem 0;
+    padding: 0;
+    display: flex;
+    grid-gap: 0.5rem;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .tags li {
+    border-radius: 50px;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: var(--color-text);
+    background: var(--color-bg-shade);
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    box-decoration-break: clone;
+    margin: 0 0.15rem;
+    font-size: 1rem;
+  }
+
   @media (min-width: 1024px) {
     h1 {
       font-size: 3.5rem;
@@ -460,7 +484,17 @@
     <a href="/blog" class="back">← See all posts</a>
 
     <h1>{p.content.title}</h1>
+
+    {#if Array.isArray(p.tag_list) && p.tag_list.length > 0}
+      <ul class="tags">
+        {#each p.tag_list as tag}
+          <li>{tag}</li>
+        {/each}
+      </ul>
+    {/if}
+
     <time
+      class="publish-time"
       title="Originally published {formatDate('YYYY-MM-DD', new Date(p.first_published_at))}"
       datetime={formatDate('YYYY-MM-DD', new Date(p.first_published_at))}>
       {@html formatDateNth(new Date(p.first_published_at))}
