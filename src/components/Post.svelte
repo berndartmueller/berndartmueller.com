@@ -467,7 +467,7 @@
     </time>
 
     <div class="content">
-      {#if p.content.image}
+      {#if p.content.image && p.content.image.image}
         <figure class="extend">
           <a href={p.content.image.image}>
             <img src={p.content.image.image} alt={p.content.image.caption} />

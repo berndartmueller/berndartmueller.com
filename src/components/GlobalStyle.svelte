@@ -18,9 +18,9 @@
       --color-primary: #bc2457;
       --color-grey-light: #2e2f38;
       --color-bg: #0f0e17;
-      --color-bg-shade: #f0f0f1;
+      --color-bg-shade: #2b2c2d;
       --color-text: #e1e1ea;
-      --color-text-shade: #2b2c2d;
+      --color-text-shade: #e1e1ea;
       --color-text-light: #909499;
       --color-text-headline: #fffffe;
       --syntax-highlight-bg: transparent;

@@ -4,8 +4,6 @@ import twemoji from 'twemoji';
 const twOptions = { folder: 'svg', ext: '.svg' };
 
 const emojify = (text: string) => twemoji.parse(text, twOptions);
-
-const bold = readFileSync(`${__dirname}/assets/fonts/PlayfairDisplay-Bold.woff2`).toString('base64');
 const avatar = readFileSync(`${__dirname}/assets/images/avatar.jpg`).toString('base64');
 
 function getCSS(theme: 'light' | 'dark', fontSize: string) {
@@ -18,14 +16,6 @@ function getCSS(theme: 'light' | 'dark', fontSize: string) {
   }
 
   return `
-    @font-face {
-      font-family: 'Playfair Display';
-      font-style: normal;
-      font-display: swap;
-      font-weight: 500;
-      src: url(data:font/woff2;charset=utf-8;base64,${bold}) format('woff2');
-    }
-
     body,
     html {
       margin: 0;
@@ -38,8 +28,7 @@ function getCSS(theme: 'light' | 'dark', fontSize: string) {
 
     .bodywrapper {
       background: ${background};
-      font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-      sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
       min-height: calc(100vh - 4rem);
       display: flex;
       flex-direction: column;
@@ -91,7 +80,7 @@ function getCSS(theme: 'light' | 'dark', fontSize: string) {
       font-size: ${sanitizeHtml(fontSize)};
       font-style: normal;
       font-weight: bold;
-      font-family: 'Playfair Display', Georgia, Times, serif;
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
       text-rendering: optimizeLegibility;
       color: ${foreground};
       line-height: 1.25;
@@ -116,7 +105,7 @@ function getCSS(theme: 'light' | 'dark', fontSize: string) {
       padding: 2rem 0 0.5rem;
       width: 100%;
       font-size: 1.65rem;
-      font-family: 'Playfair Display', Georgia, Times, serif;
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
       text-align: center;
       position: absolute;
       bottom: 0;
