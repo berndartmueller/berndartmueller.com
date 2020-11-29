@@ -459,6 +459,75 @@
     font-size: 1rem;
   }
 
+  .content :global(blockquote) {
+    margin: 3.5rem 0 3rem;
+    font-style: italic;
+    padding-left: 2.25em;
+    line-height: 1.85rem;
+    position: relative;
+  }
+
+  .content :global(blockquote) :global(cite) {
+    display: block;
+    margin-top: 1.5rem;
+  }
+
+  .content :global(blockquote) :global(p:first-of-type) {
+    quotes: '\201C''\201D''\2018''\2019';
+  }
+
+  .content :global(blockquote) :global(p:first-of-type::before) {
+    content: open-quote;
+    margin-right: 0.1rem;
+    position: absolute;
+    font-size: 7rem;
+    color: var(--color-bg-shade);
+    font-family: Times;
+    font-weight: bold;
+    left: -20px;
+    z-index: -1;
+    top: 10px;
+  }
+
+  .content :global(blockquote) :global(cite::before) {
+    content: '—';
+    margin-right: 1rem;
+  }
+
+  .content :global(blockquote.twitter-tweet) {
+    margin: 3rem 0;
+    padding: 0;
+  }
+
+  .content :global(blockquote.twitter-tweet) :global(p:first-of-type::before) {
+    content: initial;
+  }
+
+  .content :global(.twitter-tweet-rendered) {
+    margin: 3rem auto !important;
+  }
+
+  .content :global(.callout) {
+    position: relative;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-bg-shade);
+    background-color: var(--color-bg-shade);
+    padding: 2rem;
+    border-left: 4px solid var(--color-primary);
+  }
+
+  .content :global(.callout) :global(p:first-of-type) {
+    margin-top: 0;
+  }
+
+  .content :global(.callout) :global(p:last-of-type) {
+    margin-bottom: 0;
+  }
+
+  .content :global(.callout) :global(p:only-of-type) {
+    margin: 0;
+  }
+
   @media (min-width: 1024px) {
     h1 {
       font-size: 3.5rem;

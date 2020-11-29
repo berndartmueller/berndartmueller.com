@@ -18,7 +18,7 @@
       --color-primary: #bc2457;
       --color-grey-light: #2e2f38;
       --color-bg: #0f0e17;
-      --color-bg-shade: #27282e;
+      --color-bg-shade: #242431;
       --color-text: #e1e1ea;
       --color-text-shade: #e1e1ea;
       --color-text-light: #909499;
