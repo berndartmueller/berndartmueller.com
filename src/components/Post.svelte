@@ -14,7 +14,8 @@
     const commentsElem = document.querySelector('#comments');
 
     lazyInit(commentsElem, () => {
-      let isLoaded = document.querySelectorAll('.utterances-script');
+      let utterancesScripts = document.querySelectorAll('script.utterances-script');
+      let isLoaded = utterancesScripts && utterancesScripts.length > 0;
 
       let myScript = document.createElement('script');
       myScript.src = 'https://utteranc.es/client.js';
@@ -30,6 +31,19 @@
         return;
       }
     });
+
+    const twitterTweetPreviewElements = document.querySelectorAll('.content .twitter-tweet');
+    const hasTwitterTweetPreviews = twitterTweetPreviewElements && twitterTweetPreviewElements.length > 0;
+
+    if (hasTwitterTweetPreviews) {
+      const script = document.createElement('script');
+      script.src = 'https://platform.twitter.com/widgets.js';
+      script.crossOrigin = 'anonymous';
+      script.className = 'twitter-widget-script';
+      script.charset = 'utf-8';
+
+      document.head.appendChild(script);
+    }
   });
 
   export let post, otherPosts;
