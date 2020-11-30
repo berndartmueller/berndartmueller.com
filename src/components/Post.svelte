@@ -459,6 +459,80 @@
     font-size: 1rem;
   }
 
+  .content :global(ol),
+  .content :global(ul) {
+    counter-reset: list-counter;
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0;
+  }
+
+  .content :global(ol li),
+  .content :global(ul li) {
+    position: relative;
+    counter-increment: list-counter;
+    padding-left: 1.8em;
+  }
+
+  .content :global(ol > li::before) {
+    content: counter(list-counter) '.';
+    position: absolute;
+    font-weight: 400;
+    color: var(--color-text-shade);
+    left: 0;
+  }
+
+  .content :global(ul > li::before) {
+    content: '';
+    position: absolute;
+    background-color: var(--color-text-shade);
+    border-radius: 50%;
+    width: 0.375em;
+    height: 0.375em;
+    top: calc(0.875em - 0.1875em);
+    left: 0.25em;
+  }
+
+  :global(.content > ul > li > *:first-child),
+  :global(.content > ol > li > *:first-child) {
+    margin-top: 1.25em;
+  }
+
+  :global(.content > ul > li > *:last-child),
+  :global(.content > ol > li > *:last-child) {
+    margin-bottom: 1.25em;
+  }
+
+  .content :global(table) {
+    line-height: 1.5;
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: auto;
+    text-align: left;
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+
+  .content :global(thead th) {
+    font-weight: 600;
+    border-bottom-width: 2px;
+    border-bottom-color: var(--color-grey-light);
+    border-bottom-style: solid;
+    padding: 0 0.5rem 0.75rem 0;
+  }
+
+  .content :global(tbody td) {
+    vertical-align: top;
+    padding: 0.75rem 0.5rem 0.75rem 0;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--color-grey-light);
+    border-bottom-style: solid;
+  }
+
+  .content :global(tbody tr:last-child td) {
+    border-bottom-width: 0;
+  }
+
   .content :global(blockquote) {
     margin: 3.5rem 0 3rem;
     font-style: italic;
