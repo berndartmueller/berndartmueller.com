@@ -4,6 +4,7 @@
   import GlobalStyle from '../components/GlobalStyle.svelte';
   import Nav from '../components/Nav.svelte';
   import Footer from '../components/Footer.svelte';
+  import { onMount, afterUpdate } from 'svelte';
 
   NProgress.configure({
     minimum: 0.16,
@@ -21,6 +22,18 @@
       NProgress.done();
     }
   }
+  /**
+   * A/B edge
+   */
+  afterUpdate(() => {
+    if (window['abEdgeHook'] && typeof window['abEdgeHook'] === 'function') {
+      try {
+        window['abEdgeHook']();
+      } catch (error) {
+        console.warn('Error running A/B edge hook', error);
+      }
+    }
+  });
 
   export let segment;
 </script>
