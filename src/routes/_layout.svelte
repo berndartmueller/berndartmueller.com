@@ -4,7 +4,7 @@
   import GlobalStyle from '../components/GlobalStyle.svelte';
   import Nav from '../components/Nav.svelte';
   import Footer from '../components/Footer.svelte';
-  import { onMount, afterUpdate } from 'svelte';
+  import { tick, onMount, afterUpdate } from 'svelte';
 
   NProgress.configure({
     minimum: 0.16,
@@ -22,11 +22,30 @@
       NProgress.done();
     }
   }
+
   /**
    * A/B edge
    */
-  afterUpdate(() => {
+  onMount(async () => {
+    console.log('onmount');
+
     if (window['abEdgeHook'] && typeof window['abEdgeHook'] === 'function') {
+      await tick();
+
+      try {
+        window['abEdgeHook']();
+      } catch (error) {
+        console.warn('Error running A/B edge hook', error);
+      }
+    }
+  });
+
+  afterUpdate(async () => {
+    console.log('afterUpdate');
+
+    if (window['abEdgeHook'] && typeof window['abEdgeHook'] === 'function') {
+      await tick();
+
       try {
         window['abEdgeHook']();
       } catch (error) {

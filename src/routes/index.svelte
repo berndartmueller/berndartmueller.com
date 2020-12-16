@@ -95,7 +95,7 @@
 <PageTransition>
   <div class="intro">
     <h2>Hi, I'm Bernd Artmüller.</h2>
-    <h1>I'm a Serial Founder and Full-Stack Developer</h1>
+    <h1 class="ab-heading">I'm a Serial Founder and Full-Stack Developer</h1>
 
     <p>
       I'm Co-Founder & CTO at
